@@ -1,9 +1,9 @@
 tasks:
 - before: >
-    echo $SSH_PRIVATE_KEY | base64 --decode >> ~/.ssh/gitpod_rsa &&
-    echo $SSH_PUBLIC_KEY | base64 --decode >> ~/.ssh/gitpod_rsa.pub &&
-    chmod 600 ~/.ssh/gitpod_rsa &&
-    chmod 644 ~/.ssh/gitpod_rsa.pub
+    echo $SSH_PRIVATE_KEY | base64 --decode >> ~/.ssh/id_rsa &&
+    echo $SSH_PUBLIC_KEY | base64 --decode >> ~/.ssh/id_rsa.pub &&
+    chmod 600 ~/.ssh/id_rsa &&
+    chmod 644 ~/.ssh/id_rsa.pub
 - init: >
     git clone git@github.com:zpthree/pulsar-conf.git ~/pulsar &&
     git clone git@github.com:zpthree/dotfiles.git ~/dotfiles
