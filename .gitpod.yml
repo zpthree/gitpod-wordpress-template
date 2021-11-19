@@ -1,7 +1,7 @@
 tasks:
 - before: >
-    echo $SSH_PRIVATE_KEY | base64 --decode >> gitpod_rsa &&
-    echo $SSH_PRIVATE_KEY | base64 --decode >> gitpod_rsa.pub
+    echo $SSH_PRIVATE_KEY | base64 --decode >> ~/.ssh/gitpod_rsa &&
+    echo $SSH_PRIVATE_KEY | base64 --decode >> ~/.ssh/gitpod_rsa.pub
     chmod 600 ~/.ssh/gitpod_rsa &&
     chmod 644 ~/.ssh/gitpod_rsa.pub
 - init: >
