@@ -5,5 +5,5 @@ tasks:
     chmod 600 ~/.ssh/id_rsa &&
     chmod 644 ~/.ssh/id_rsa.pub
 - init: >
-    git clone git@github.com:zpthree/pulsar-conf.git ~/pulsar &&
-    git clone git@github.com:zpthree/dotfiles.git ~/dotfiles
+    git clone https://github.com/zpthree/pulsar-conf.git ~/pulsar &&
+    git clone https://github.com/zpthree/dotfiles.git ~/dotfiles
