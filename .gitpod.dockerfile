@@ -8,12 +8,6 @@ RUN apt-get update && \
   apt-get install -y zsh && \
   apt-get install -y ruby-full
 
-USER gitpod
-
-# start zsh
-
-CMD [ "zsh" ]
-
 RUN gem install colorls
 RUN gem install pulsar
 
@@ -23,3 +17,9 @@ RUN gem install bundler -v 1.17.3 --default
 RUN cd $HOME/pulsar
 RUN bundle _1.17.3_ install
 RUN cd $current_dir
+
+USER gitpod
+
+# start zsh
+
+CMD [ "zsh" ]
