@@ -8,14 +8,11 @@ tasks:
     chmod 600 ~/.ssh/id_rsa
   command: |
     exit;
-- name: Add pulsar and dotfiles repo
+- name: Pulsar, Dotfiles, Docker
   before: >
     git clone https://github.com/zpthree/pulsar-conf.git ~/pulsar &&
     git clone https://github.com/zpthree/gitpod-dotfiles.git ~/dotfiles &&
-    sh $HOME/dotfiles/install.sh && cd $GITPOD_REPO_ROOT;
-  command: |
-    exit;
-- name: Docker
+    sh $HOME/dotfiles/install.sh && cd $GITPOD_REPO_ROOT && exit;
   init: >
     docker-compose pull
   command: |
