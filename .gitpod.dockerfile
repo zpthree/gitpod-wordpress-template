@@ -4,9 +4,9 @@ USER root
 
 # Install custom tools, runtime, etc.
 
-RUN ["apt-get", "update"]
-
-RUN ["apt-get", "install", "-y", "zsh"]
+RUN apt-get update && \
+  apt-get install -y zsh && \
+  apt-get install -y ruby-full
 
 USER gitpod
 
