@@ -2,13 +2,21 @@ image:
   file: .gitpod.dockerfile
 
 tasks:
-- before: >
+- name: Install SSH Key
+  before: >
     echo $SSH_PRIVATE_KEY | base64 --decode >> ~/.ssh/id_rsa &&
     chmod 600 ~/.ssh/id_rsa
-- init: >
+  command: |
+    exit;
+- name: Add pulsar and dotfiles repo
+  before: >
     git clone https://github.com/zpthree/pulsar-conf.git ~/pulsar &&
     git clone https://github.com/zpthree/gitpod-dotfiles.git ~/dotfiles &&
-    sh $HOME/dotfiles/install.sh &&
+    sh $HOME/dotfiles/install.sh && cd $GITPOD_REPO_ROOT;
+  command: |
+    exit;
+- name: Docker
+  init: >
     docker-compose pull
-- command: |
+  command: |
     docker-compose up
