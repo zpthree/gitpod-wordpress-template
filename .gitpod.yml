@@ -8,4 +8,7 @@ tasks:
 - init: >
     git clone https://github.com/zpthree/pulsar-conf.git ~/pulsar &&
     git clone https://github.com/zpthree/gitpod-dotfiles.git ~/dotfiles &&
-    sh $HOME/dotfiles/install.sh
+    sh $HOME/dotfiles/install.sh &&
+    docker-compose pull
+- command: |
+    docker-compose up
