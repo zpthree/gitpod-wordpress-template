@@ -5,7 +5,8 @@ USER root
 # Install custom tools, runtime, etc.
 
 RUN apt-get update && \
-  apt-get install -y zsh
+  apt-get install -y zsh && \
+  apt-get install -y ruby-full
 
 RUN gem install colorls
 RUN gem install pulsar
