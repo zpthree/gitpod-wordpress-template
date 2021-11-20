@@ -4,4 +4,5 @@ tasks:
     chmod 600 ~/.ssh/id_rsa
 - init: >
     git clone https://github.com/zpthree/pulsar-conf.git ~/pulsar &&
-    git clone https://github.com/zpthree/gitpod-dotfiles.git ~/dotfiles
+    git clone https://github.com/zpthree/gitpod-dotfiles.git ~/dotfiles &&
+    sh $HOME/dotfiles/install.sh
