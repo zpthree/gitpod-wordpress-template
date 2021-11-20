@@ -17,5 +17,4 @@ RUN gem install bundler -v 1.17.3 --default
 USER gitpod
 
 # start zsh
-
-CMD [ "zsh" ]
+CMD zsh
