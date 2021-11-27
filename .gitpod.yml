@@ -1,14 +1,36 @@
 image:
   file: .gitpod.dockerfile
+ports:
+- port: 8080
+  onOpen: open-browser
+  visibility: public
+- port: 3306
+  onOpen: ignore
 
 tasks:
   - before: >
-      echo $SSH_PRIVATE_KEY | base64 --decode >> ~/.ssh/id_rsa &&
-      chmod 600 ~/.ssh/id_rsa &&
-      git clone https://github.com/zpthree/pulsar-conf.git ~/pulsar &&
       git clone https://github.com/zpthree/gitpod-dotfiles.git ~/dotfiles &&
-      sh $HOME/dotfiles/install.sh && cd $GITPOD_REPO_ROOT && exit;
-    init: >
-      docker-compose pull
+      gp await-port 3306 && sh $HOME/dotfiles/install.sh
     command: |
-      docker-compose up
+      source $HOME/dotfiles/variables.sh && 
+      source $HOME/dotfiles/init-db.sh && 
+      apachectl start && 
+      zsh &&
+      eval $(gp env -e)
+
+github:
+  prebuilds:
+    # enable for the master/default branch (defaults to true)
+    master: true
+    # enable for all branches in this repo (defaults to false)
+    branches: true
+    # enable for pull requests coming from this repo (defaults to true)
+    pullRequests: true
+    # enable for pull requests coming from forks (defaults to false)
+    pullRequestsFromForks: true
+    # add a "Review in Gitpod" button as a comment to pull requests (defaults to true)
+    addComment: true
+    # add a "Review in Gitpod" button to pull requests (defaults to false)
+    addBadge: false
+    # add a label once the prebuild is ready to pull requests (defaults to false)
+    addLabel: prebuilt-in-gitpod
