@@ -2,7 +2,7 @@ image:
   file: .gitpod.dockerfile
 ports:
 - port: 8080
-  onOpen: open-browser
+  onOpen: ignore
   visibility: public
 - port: 3306
   onOpen: ignore
@@ -12,12 +12,7 @@ tasks:
       git clone https://github.com/zpthree/gitpod-dotfiles.git ~/dotfiles &&
       gp await-port 3306 && sh $HOME/dotfiles/install.sh
     command: |
-      source $HOME/dotfiles/variables.sh && 
-      source $HOME/dotfiles/init-db.sh && 
-      apachectl start && 
-      zsh &&
-      eval $(gp env -e)
-
+      source $HOME/dotfiles/post-build.sh
 github:
   prebuilds:
     # enable for the master/default branch (defaults to true)
