@@ -9,8 +9,7 @@ ports:
 
 tasks:
   - before: >
-      git clone https://github.com/zpthree/gitpod-dotfiles.git ~/dotfiles &&
-      gp await-port 3306 && sh $HOME/dotfiles/install.sh
+      gp await-port 3306 && sh $HOME/dotfiles/workflow-php.sh
     command: |
       source $HOME/dotfiles/post-build.sh
 github:
