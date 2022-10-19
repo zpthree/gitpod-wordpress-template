@@ -8,10 +8,12 @@ ports:
   onOpen: ignore
 
 tasks:
-  - before: >
-      gp await-port 3306 && sh $HOME/.dotfiles/workflow-php.sh
+  - before: |
+      gp await-port 3306
+      sh ~/.dotfiles/base.sh
+      sh ~/.dotfiles/workflow-php.sh
     command: |
-      source $HOME/.dotfiles/post-build.sh
+      source ~/.dotfiles/post-build.sh
 github:
   prebuilds:
     # enable for the master/default branch (defaults to true)
